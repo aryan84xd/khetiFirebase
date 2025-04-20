@@ -1,8 +1,8 @@
 from flask import Flask, request, jsonify
 from langchain_community.document_loaders import TextLoader
-from langchain.indexes import VectorstoreIndexCreator
-from langchain.embeddings import HuggingFaceEmbeddings
-from langchain.text_splitter import RecursiveCharacterTextSplitter
+from langchain_community.indexes import VectorstoreIndexCreator
+from langchain_community.embeddings import HuggingFaceEmbeddings
+from langchain_community.text_splitter import RecursiveCharacterTextSplitter
 from langchain_community.vectorstores import FAISS
 from flask_cors import CORS
 from dotenv import load_dotenv

@@ -8,5 +8,5 @@ langchain
 langchain_community
 huggingface-hub
 sentence-transformers
-faiss-cpu
+
 google-generativeai

@@ -1,0 +1,9 @@
+@media (max-width: 768px) {
+  .MuiDrawer-paper {
+    width: 100% !important;
+  }
+}
+
+.MuiAppBar-root {
+  z-index: 1300;  /* Ensures the app bar stays on top */
+}

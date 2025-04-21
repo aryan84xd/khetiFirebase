@@ -3,7 +3,7 @@ import { initializeApp } from "firebase/app";
 import { getAuth } from "firebase/auth";
 import { getFirestore } from "firebase/firestore";
 import { getStorage } from "firebase/storage";
-import {GoogleAuthProvider, signInWithPopup } from "firebase/auth"
+import {GoogleAuthProvider } from "firebase/auth"
 const firebaseConfig = {
     apiKey: "AIzaSyCXX2P75QFsaP-NDm9JWvuSFLPd1XhSj7Y",
     authDomain: "kheti2-380ec.firebaseapp.com",

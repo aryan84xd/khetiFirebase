@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from "react";
+import React, { useState, useEffect,useCallback } from "react";
 import {
   TextField,
   Button,
@@ -61,18 +61,7 @@ export default function BlogPage() {
   const db = getFirestore();
   const storage = getStorage();
 
-  useEffect(() => {
-    fetchBlogs();
-    
-    // Listen for auth state changes
-    const unsubscribe = onAuthStateChanged(auth, (currentUser) => {
-      setUser(currentUser);
-    });
-
-    return () => unsubscribe();
-  }, []);
-
-  const fetchBlogs = async () => {
+  const fetchBlogs = useCallback(async () => {
     try {
       const blogsQuery = query(collection(db, "blogs"), orderBy("created_at", "desc"));
       const querySnapshot = await getDocs(blogsQuery);
@@ -86,7 +75,18 @@ export default function BlogPage() {
     } catch (error) {
       console.error("Error fetching blogs:", error);
     }
-  };
+  }, [db]);
+
+  useEffect(() => {
+    fetchBlogs();
+    
+    // Listen for auth state changes
+    const unsubscribe = onAuthStateChanged(auth, (currentUser) => {
+      setUser(currentUser);
+    });
+
+    return () => unsubscribe();
+  }, [auth, fetchBlogs]);
 
   const handleChange = (e) => {
     setBlog({ ...blog, [e.target.name]: e.target.value });
@@ -402,7 +402,7 @@ export default function BlogPage() {
                     >
                       <img
                         src={selectedBlog.image_data[currentImageIndex].url}
-                        alt={`Blog image ${currentImageIndex + 1}`}
+                        alt={`Blog ${currentImageIndex + 1}`}
                         style={{
                           width: '100%',
                           height: '100%',

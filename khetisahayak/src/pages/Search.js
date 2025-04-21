@@ -13,7 +13,7 @@ import {
   CardMedia,
   CardActions,
   Button,
-  Grid,
+
   TextField,
   MenuItem,
   Dialog,
@@ -30,8 +30,7 @@ import {
   doc, 
   getDoc, 
   updateDoc, 
-  addDoc,
-  Timestamp 
+ 
 } from "firebase/firestore";
 import { ref, getDownloadURL } from "firebase/storage";
 import stateDistrictMap from "../components/statesWithDistricts";
@@ -182,7 +181,7 @@ export default function Search() {
         return;
       }
 
-      const userId = currentUser.uid;
+      // const userId = currentUser.uid;
       const numberOfDays = endDate.diff(startDate, "day") + 1;
       const totalCost = parseFloat(selectedEquipment.rental_price) * numberOfDays;
 
@@ -216,17 +215,17 @@ export default function Search() {
       }
 
       // Create the booking
-      const bookingRef = collection(db, "bookings");
-      const newBooking = await addDoc(bookingRef, {
-        equipment_id: selectedEquipment.id,
-        user_id: userId,
-        owner_id: selectedEquipment.user_id,
-        start_date: Timestamp.fromDate(startDate.toDate()),
-        end_date: Timestamp.fromDate(endDate.toDate()),
-        cost: totalCost,
-        status: "rented",
-        created_at: Timestamp.now()
-      });
+      // const bookingRef = collection(db, "bookings");
+      // const newBooking = await addDoc(bookingRef, {
+      //   equipment_id: selectedEquipment.id,
+      //   user_id: userId,
+      //   owner_id: selectedEquipment.user_id,
+      //   start_date: Timestamp.fromDate(startDate.toDate()),
+      //   end_date: Timestamp.fromDate(endDate.toDate()),
+      //   cost: totalCost,
+      //   status: "rented",
+      //   created_at: Timestamp.now()
+      // });
 
       alert(`Booking successful! Total cost: ₹${totalCost}`);
       handleClose();

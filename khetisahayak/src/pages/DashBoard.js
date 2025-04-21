@@ -270,9 +270,9 @@ export default function DashBoard() {
   };
 
   // Helper function to format date
-  const formatDate = (dateString) => {
-    return new Date(dateString).toLocaleDateString();
-  };
+  // const formatDate = (dateString) => {
+  //   return new Date(dateString).toLocaleDateString();
+  // };
   return (
     <Container maxWidth="lg" sx={{ paddingTop: 4 }}>
       {user && (

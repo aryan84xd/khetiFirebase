@@ -1,0 +1,14 @@
+flask==2.3.3
+flask-cors==4.0.0
+python-dotenv==1.0.0
+langchain==0.1.0
+langchain-community==0.0.13
+faiss-cpu==1.7.4
+sentence-transformers==2.2.2
+google-generativeai==0.3.1
+torch==2.0.1
+numpy==1.24.3
+pydantic==1.10.8
+transformers==4.30.2
+typing-extensions==4.7.1
+requests==2.31.0

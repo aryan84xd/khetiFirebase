@@ -4,4 +4,4 @@ python-dotenv
 google-generativeai
 numpy
 scikit-learn
-pickle5
+

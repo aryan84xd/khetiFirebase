@@ -41,7 +41,7 @@ export default function AIChat() {
     setLoading(true);
 
     try {
-      const response = await fetch("http://localhost:5001/query", {
+      const response = await fetch("https://khetifirebase-88g2.onrender.com/query", {
         method: "POST",
         headers: {
           "Content-Type": "application/json",

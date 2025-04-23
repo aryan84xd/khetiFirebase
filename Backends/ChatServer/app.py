@@ -12,7 +12,7 @@ import json
 
 # Initialize Flask app
 app = Flask(__name__)
-CORS(app)
+CORS(app, origins=["http://localhost:3000", "https://khetifirebase-1.onrender.com"])
 
 # Load environment variables
 load_dotenv()

@@ -38,8 +38,8 @@ crop_names = ['apple', 'banana', 'blackgram', 'chickpea', 'coconut', 'coffee', '
               'papaya', 'pigeonpeas', 'pomegranate', 'rice', 'watermelon']
 
 app = Flask(__name__)
-CORS(app, origins=["https://khetifirebase-1.onrender.com"])
-
+# CORS(app, origins=["https://khetifirebase-1.onrender.com"])
+CORS(app, resources={r"/*": {"origins": ["https://khetifirebase-1.onrender.com"]}})
 def apply_temperature_scaling(logits, temperature=1.5):
     """Apply temperature scaling to logits."""
     exp_logits = np.exp(logits / temperature)
@@ -71,7 +71,7 @@ def get_production_value(crop_name):
     try:
         crop_doc = db.collection('crops').document(crop_name).get()
         if crop_doc.exists:
-            return crop_doc.to_dict().get('production', 0)
+            return crop_doc.to_dict().get('production_data', 0)
         return 0  # Return 0 for new crops
     except Exception as e:
         print(f"Error getting production for {crop_name}: {str(e)}")
@@ -144,7 +144,7 @@ def add_crop_production():
         if crop_doc.exists:
             current_production = crop_doc.to_dict().get('production', 0)
             new_production = current_production + production_value
-            crop_ref.update({"production": new_production})
+            crop_ref.update({"production_data": new_production})
         else:
             new_production = production_value
             crop_ref.set({"production": new_production})

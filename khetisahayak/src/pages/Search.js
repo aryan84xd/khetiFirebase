@@ -31,7 +31,8 @@ import {
   doc, 
   getDoc, 
   updateDoc, 
-   Timestamp
+   Timestamp,
+  addDoc
 } from "firebase/firestore";
 import { ref, getDownloadURL } from "firebase/storage";
 import stateDistrictMap from "../components/statesWithDistricts";

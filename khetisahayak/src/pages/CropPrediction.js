@@ -364,9 +364,7 @@ const CropPredictionForm = () => {
                   <strong>Probability:</strong>{" "}
                   {(result.probability * 100).toFixed(2)}%
                 </Typography>
-                // <Typography variant="body1">
-                //   <strong>Production Value:</strong> {result.production_value}
-                // </Typography>
+               
               </Box>
             </Paper>
           )}

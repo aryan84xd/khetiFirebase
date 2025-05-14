@@ -4,6 +4,7 @@ import dayjs from "dayjs";
 import { AdapterDayjs } from "@mui/x-date-pickers/AdapterDayjs";
 import { LocalizationProvider } from "@mui/x-date-pickers/LocalizationProvider";
 import { DatePicker } from "@mui/x-date-pickers/DatePicker";
+
 import {
   Container,
   Typography,
@@ -30,7 +31,7 @@ import {
   doc, 
   getDoc, 
   updateDoc, 
- 
+   Timestamp
 } from "firebase/firestore";
 import { ref, getDownloadURL } from "firebase/storage";
 import stateDistrictMap from "../components/statesWithDistricts";
@@ -181,7 +182,7 @@ export default function Search() {
         return;
       }
 
-      // const userId = currentUser.uid;
+      const userId = currentUser.uid;
       const numberOfDays = endDate.diff(startDate, "day") + 1;
       const totalCost = parseFloat(selectedEquipment.rental_price) * numberOfDays;
 
@@ -214,7 +215,7 @@ export default function Search() {
         throw new Error("Failed to verify equipment availability update");
       }
 
-      Create the booking
+      //Create the booking
       const bookingRef = collection(db, "bookings");
       const newBooking = await addDoc(bookingRef, {
         equipment_id: selectedEquipment.id,

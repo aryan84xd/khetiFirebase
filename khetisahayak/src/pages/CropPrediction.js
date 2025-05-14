@@ -140,7 +140,7 @@ const CropPredictionForm = () => {
 
     try {
       const predictResponse = await fetch(
-        "http://localhost:5002/predict_crop",
+        "https://khetifirebase.onrender.com/predict_crop",
         {
           method: "POST",
           headers: {

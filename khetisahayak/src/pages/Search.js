@@ -214,18 +214,18 @@ export default function Search() {
         throw new Error("Failed to verify equipment availability update");
       }
 
-      // Create the booking
-      // const bookingRef = collection(db, "bookings");
-      // const newBooking = await addDoc(bookingRef, {
-      //   equipment_id: selectedEquipment.id,
-      //   user_id: userId,
-      //   owner_id: selectedEquipment.user_id,
-      //   start_date: Timestamp.fromDate(startDate.toDate()),
-      //   end_date: Timestamp.fromDate(endDate.toDate()),
-      //   cost: totalCost,
-      //   status: "rented",
-      //   created_at: Timestamp.now()
-      // });
+      Create the booking
+      const bookingRef = collection(db, "bookings");
+      const newBooking = await addDoc(bookingRef, {
+        equipment_id: selectedEquipment.id,
+        user_id: userId,
+        owner_id: selectedEquipment.user_id,
+        start_date: Timestamp.fromDate(startDate.toDate()),
+        end_date: Timestamp.fromDate(endDate.toDate()),
+        cost: totalCost,
+        status: "rented",
+        created_at: Timestamp.now()
+      });
 
       alert(`Booking successful! Total cost: ₹${totalCost}`);
       handleClose();

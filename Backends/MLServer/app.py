@@ -15,6 +15,9 @@ FIREBASE_CREDENTIALS_PATH = os.getenv("FIREBASE_CREDENTIALS_PATH")
 if not FIREBASE_CREDENTIALS_PATH:
     raise ValueError("Missing required environment variable: FIREBASE_CREDENTIALS_PATH")
 
+
+
+
 # Initialize Firebase
 try:
     cred = credentials.Certificate(FIREBASE_CREDENTIALS_PATH)
@@ -35,7 +38,7 @@ crop_names = ['apple', 'banana', 'blackgram', 'chickpea', 'coconut', 'coffee', '
               'papaya', 'pigeonpeas', 'pomegranate', 'rice', 'watermelon']
 
 app = Flask(__name__)
-CORS(app)
+CORS(app, origins=["https://khetifirebase-1.onrender.com"])
 
 def apply_temperature_scaling(logits, temperature=1.5):
     """Apply temperature scaling to logits."""

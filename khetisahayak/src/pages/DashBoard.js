@@ -23,7 +23,8 @@ import {
   getDocs, 
   doc, 
   updateDoc, 
-  Timestamp 
+  Timestamp ,
+  getDoc
 } from "firebase/firestore";
 import { ref, getDownloadURL } from "firebase/storage";
 
@@ -186,22 +187,22 @@ export default function DashBoard() {
   }, []);
 
   // Helper function to get equipment by ID
-  const getEquipmentById = async (equipmentId) => {
-    try {
-      const equipmentRef = doc(db, "user_equipment", equipmentId);
-      const equipmentSnap = await getDocs(equipmentRef);
-      
-      if (equipmentSnap.exists()) {
-        return { id: equipmentSnap.id, ...equipmentSnap.data() };
-      } else {
-        console.log("No equipment found with ID:", equipmentId);
-        return null;
-      }
-    } catch (error) {
-      console.error("Error fetching equipment:", error);
+ const getEquipmentById = async (equipmentId) => {
+  try {
+    const equipmentRef = doc(db, "user_equipment", equipmentId);
+    const equipmentSnap = await getDoc(equipmentRef); // Use getDoc instead of getDocs
+    
+    if (equipmentSnap.exists()) {
+      return { id: equipmentSnap.id, ...equipmentSnap.data() };
+    } else {
+      console.log("No equipment found with ID:", equipmentId);
       return null;
     }
-  };
+  } catch (error) {
+    console.error("Error fetching equipment:", error);
+    return null;
+  }
+};
 
   const getImageUrl = async (path) => {
     try {

@@ -112,7 +112,7 @@ export default function BlogPage() {
 
   const sendToFlaskAPI = async (title, content) => {
     try {
-      const response = await fetch('http://localhost:5001/add', {
+      const response = await fetch('https://khetifirebase-88g2.onrender.com/add', {
         method: 'POST',
         headers: {
           'Content-Type': 'application/json',
